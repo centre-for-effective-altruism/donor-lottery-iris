@@ -7,6 +7,14 @@ data from IRIS (Incorporated Research Institutions for Seismology).
 
 Assumes you want a 10-digit hex string, as per the [EffectiveAltruism.org donor lottery](https://app.effectivealtruism.org/lotteries).
 
+The script works as follows:
+- get the request from the IRIS server for the relevant event
+- trim newlines from the response
+- strip the response to just the numeric digits
+- get the SHA256 hash of the digit string in binary
+- cast the binary hash to a hexdump (only keeping the first line)
+- truncate the hash to its first 10 characters
+
 ## Usage:
 ```
 ./draw_lottery_iris.sh iris_id
@@ -37,10 +45,7 @@ Which returns:
 
 ```
 
-The script works as follows:
-- get the request from the IRIS server for the relevant event
-- trim newlines from the response
-- strip the response to just the numeric digits
-- get the SHA256 hash of the digit string in binary
-- cast the binary hash to a hexdump (only keeping the first line)
-- truncate the hash to its first 10 characters
+
+## Old version
+
+A previously published version of the script is preserved in `./draw_lottery_iris_old.sh`
